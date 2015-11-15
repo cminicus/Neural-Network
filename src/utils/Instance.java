@@ -3,9 +3,9 @@ package utils;
 public class Instance {
 	
 	private int label;
-	private FeatureVector featureVector;
+	private double[] featureVector;
 	
-	public Instance(int label, FeatureVector featureVector) {
+	public Instance(int label, double[] featureVector) {
 		this.label = label;
 		this.featureVector = featureVector;
 	}
@@ -14,7 +14,7 @@ public class Instance {
 		return this.label;
 	}
 	
-	public FeatureVector getFeatureVector() {
+	public double[] getFeatureVector() {
 		return this.featureVector;
 	}
 }

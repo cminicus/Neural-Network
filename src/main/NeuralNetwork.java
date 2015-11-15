@@ -28,9 +28,14 @@ public class NeuralNetwork {
 		createOptions();
 		parseOptions(args);
 		readFiles();
-		
-		System.out.println(trainInstances[0].getLabel());
-		System.out.println(testInstances[0].getLabel());
+		trainNeuralNetwork();
+	}
+	
+	private static void trainNeuralNetwork() {
+		int[] layers = {784, 30, 10};
+		SGDNeuralNetwork network = new SGDNeuralNetwork(layers, 30, 10, 3.0);
+		network.train(trainInstances, testInstances);
+//		network.evaluate(testInstances);
 	}
 	
 	private static void createOptions() {

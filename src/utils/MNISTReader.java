@@ -56,9 +56,9 @@ public class MNISTReader {
 			numLabelsRead++;
 			
 			// get vector
-			FeatureVector vector = new FeatureVector(numCols * numRows);
+			double[] vector = new double[numCols * numRows];
 			for (int index = 0; index < numCols * numRows; index++) {
-				vector.put(index, images.readUnsignedByte());
+				vector[index] = images.readUnsignedByte();
 			}
 			
 			// create and add instance
