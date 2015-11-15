@@ -51,6 +51,7 @@ public class NeuralNetwork {
 		parseOptions(args);
 		readFiles();
 		trainNeuralNetwork();
+		trainImprovedNeuralNetwork();
 	}
 
 	/**
@@ -58,8 +59,15 @@ public class NeuralNetwork {
 	 */
 	private static void trainNeuralNetwork() {
 		int[] layers = {784, 30, 10};
-		SGDNeuralNetwork network = new SGDNeuralNetwork(layers, 30, 10, 3.0);
-		network.train(trainInstances, testInstances);
+		SGDNeuralNetwork network = new SGDNeuralNetwork(layers, 30, 10, 3.0); // 95.32 max
+		network.train(trainInstances, validationInstances);
+	}
+	
+	private static void trainImprovedNeuralNetwork() {
+		int[] layers = {784, 100, 10};
+//		ImprovedSGDNeuralNetwork network = new ImprovedSGDNeuralNetwork(layers, 30, 10, 0.5, 5.0); // 97.28 max
+		ImprovedSGDNeuralNetwork network = new ImprovedSGDNeuralNetwork(layers, 60, 10, 0.1, 5.0); // 97.97 max - 76.67%
+		network.train(trainInstances, validationInstances);
 	}
 
 	/**
